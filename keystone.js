@@ -19,6 +19,7 @@ keystone.init({
 	'views': 'templates/views',
 	'view engine': 'pug',
 	'mongo': "mongodb://ita_admin:developer128@ds121299.mlab.com:21299/ita_database" ,
+	'cloudinary config': 'cloudinary://776293856161972:l4YutdeN1cQiYAWwR76CCWcbPlk@itamember',
 	'auto update': true,
 	'session': true,
 	'auth': true,
