@@ -58,8 +58,8 @@ exports = module.exports = function (app) {
 	app.post('/api/starships', routes.api.starship.create);
 	app.put('/api/starships/:id', routes.api.starship.update);
 	app.delete('/api/starships/:id', routes.api.starship.remove);
-	
-	app.get('/api/users', routes.api.user.list);
+
+	//app.get('/api/users', routes.api.user.list);
 	app.get('/api/users/:id', routes.api.user.get);
 	app.post('/api/users/register', routes.api.user.create);
 	app.put('/api/users/:id', routes.api.user.update);
