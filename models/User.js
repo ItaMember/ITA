@@ -27,5 +27,5 @@ User.schema.virtual('canAccessKeystone').get(function () {
 /**
  * Registration
  */
-User.defaultColumns = 'first_name|10%, last_name, email, password, address, phone_number';
+User.defaultColumns = 'first_name, last_name, email, password, address, phone_number';
 User.register();
