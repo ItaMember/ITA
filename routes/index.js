@@ -60,10 +60,10 @@ exports = module.exports = function (app) {
 	app.delete('/api/starships/:id', routes.api.starship.remove);
 
 	//app.get('/api/users', routes.api.user.list);
-	app.get('/api/users/:id', routes.api.user.get);
-	app.post('/api/users/register', routes.api.user.create);
-	app.put('/api/users/:id', routes.api.user.update);
-	app.delete('/api/users/:id', routes.api.user.remove);
+	// app.get('/api/users/:id', routes.api.user.get);
+	// app.post('/api/users/register', routes.api.user.create);
+	// app.put('/api/users/:id', routes.api.user.update);
+	// app.delete('/api/users/:id', routes.api.user.remove);
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 
