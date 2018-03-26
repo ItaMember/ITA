@@ -12,13 +12,13 @@ var keystone = require('keystone');
 keystone.init({
 	'name': 'ITA',
 	'brand': 'ITA',
-
+	
 	'less': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'pug',
-
+	'mongo': "mongodb://ita_admin:developer128@ds121299.mlab.com:21299/ita_database" ,
 	'auto update': true,
 	'session': true,
 	'auth': true,
@@ -44,10 +44,11 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	galleries: 'galleries',
-	enquiries: 'enquiries',
+	
 	users: 'users',
-	pages: 'pages'
+	pages: 'pages',
+	galleries: 'galleries',
+	enquiries: 'enquiries'
 });
 
 // Start Keystone to connect to your database and initialise the web server

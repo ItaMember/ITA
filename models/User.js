@@ -8,11 +8,14 @@ var Types = keystone.Field.Types;
 var User = new keystone.List('User');
 
 User.add({
-	name: { type: Types.Name, required: true, index: true },
 	email: { type: Types.Email, initial: true, required: true, unique: true, index: true },
-	password: { type: Types.Password, initial: true, required: true },
-}, 'Permissions', {
-	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
+    password: { type: Types.Password, initial: true, required: true },
+    first_name: {type : Types.Text, initial :true},
+    last_name: {type: Types.Text, initial:true},
+    address: {type: Types.Text, initial:true},
+    phone_number: {type: Types.Number, initial:true},
+    isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
+    image: {type: Types.CloudinaryImage }
 });
 
 // Provide access to Keystone
@@ -24,5 +27,5 @@ User.schema.virtual('canAccessKeystone').get(function () {
 /**
  * Registration
  */
-User.defaultColumns = 'name, email, isAdmin';
+User.defaultColumns = 'first_name|10%, last_name, email, password, address, phone_number';
 User.register();
