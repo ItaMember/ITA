@@ -10,10 +10,10 @@ var User = new keystone.List('User');
 User.add({
 	email: { type: Types.Email, initial: true, required: true, unique: true, index: true },
     password: { type: Types.Password, initial: true, required: true },
-    first_name: {type : Types.Text, initial :true},
-    last_name: {type: Types.Text, initial:true},
-    address: {type: Types.Text, initial:true},
-    phone_number: {type: Types.Number, initial:true},
+    first_name: {type : Types.Text, initial :true,  required: true},
+    last_name: {type: Types.Text, initial:true,  required: true},
+    address: {type: Types.Text, initial:true,  required: true},
+    phone_number: {type: Types.Text, initial:true , required: true},
     isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
     image: {type: Types.CloudinaryImage }
 });
@@ -22,6 +22,7 @@ User.add({
 User.schema.virtual('canAccessKeystone').get(function () {
 	return this.isAdmin;
 });
+
 
 
 /**
