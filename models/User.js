@@ -18,7 +18,6 @@ User.add({
     image: {type: Types.CloudinaryImage }
 });
 
-User.relationship({ path: 'emails', ref: 'email', refPath: 'email' });
 // Provide access to Keystone
 User.schema.virtual('canAccessKeystone').get(function () {
 	return this.isAdmin;
