@@ -8,12 +8,12 @@ var Types = keystone.Field.Types;
 var Event = new keystone.List('Event');
 
 Event.add({
-	name: { type: Types.Email, initial: true, required: true, unique: true, index: true },
-    time: { type: Types.Password, initial: true, required: true },
+	name: { type: Types.Text, initial: true, required: true, unique: true},
+    time: { type: Date, initial: true, required: true },
     image: {type : Types.CloudinaryImage , initial :true},
-    price: {type: Types.Text, initial:true},
+    price: {type: Types.Number, initial:true},
     participant: {type:  Types.Relationship, ref: 'User'},
-    participant_limit : {type: Types.Number, initial:true},
+    participant_limit : {type: Types.Number, initial:true}
 });
 
 
