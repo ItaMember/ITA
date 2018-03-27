@@ -16,7 +16,7 @@ Event.add({
     participant_limit : {type: Types.Number, initial:true}
 });
 
-Event.relationship({ participants: 'posts', ref: 'User', refPath: 'first_name' });
+Event.relationship({ participants: 'posts', ref: 'User', refPath: 'email' });
 /**
  * Registration
  */
