@@ -39,16 +39,32 @@ exports.create = function(req, res) {
 
   item.getUpdateHandler(req).process(data, function(err) {
 
-    if (err) return res.json({ error: err });
-
-    res.json({
-      first_name :item.first_name,
-      last_name : item.last_name,
-      email : item.email,
-      image : item.image,
-      address : item.address,
-      phone_number :item.phone_number
-    });
+    if (err)
+    {
+      // console.log(err);
+      if(err.error == "validation errors"){
+        return res.json({ 
+          "status" : "false",
+          "message" : "Sorry, there was an issue, please try again."
+        });
+      }else if(err.error == "database error"){
+        return res.json({
+          "status" : "false",
+          "message" : "The email address is already in use. Please try another email address."
+        })
+      }
+    } 
+    else{
+      return res.json({
+        first_name :item.first_name,
+        last_name : item.last_name,
+        email : item.email,
+        image : item.image,
+        address : item.address,
+        phone_number :item.phone_number
+      });
+    }
+    
 
   });
 }
