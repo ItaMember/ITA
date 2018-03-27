@@ -12,11 +12,11 @@ Event.add({
     time: { type: Date, initial: true, required: true },
     image: {type : Types.CloudinaryImage , initial :true},
     price: {type: Types.Number, initial:true},
-    participant: {type:  Types.Relationship, ref: 'User' ,  many: true},
+    participants: {type:  Types.Relationship, ref: 'User' ,  many: true},
     participant_limit : {type: Types.Number, initial:true}
 });
 
-
+Event.relationship({ participants: 'posts', ref: 'User', refPath: 'first_name' });
 /**
  * Registration
  */
