@@ -64,6 +64,7 @@ exports = module.exports = function (app) {
 	app.post('/api/users/register', routes.api.user.create);
 	app.put('/api/users/:id', routes.api.user.update);
 	app.delete('/api/users/:id', routes.api.user.remove);
+	app.post('/api/users/login',routes.api.user.login);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
