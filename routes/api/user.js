@@ -42,7 +42,12 @@ exports.create = function(req, res) {
     if (err) return res.json({ error: err });
 
     res.json({
-      user: item
+      first_name :user.first_name,
+      last_name : user.last_name,
+      email : user.email,
+      image : user.image,
+      address : user.address,
+      phone_number :user.phone_number
     });
 
   });
