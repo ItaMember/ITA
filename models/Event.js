@@ -13,7 +13,7 @@ Event.add({
     image: {type : Types.CloudinaryImage , initial :true},
     price: {type: Types.Number, initial:true},
     participant_limit : {type: Types.Number, initial:true},
-    description : { type: String, initial: true, required: true}
+    description : { type: Types.Textarea, initial: true, required: true}
 });
 
 /**
