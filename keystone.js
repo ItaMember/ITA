@@ -4,7 +4,7 @@ require('dotenv').config();
 
 // Require keystone
 var keystone = require('keystone');
-
+var cors = require('cors');
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
@@ -39,6 +39,7 @@ keystone.set('locals', {
 	editable: keystone.content.editable,
 });
 
+keystone.set('cors allow origin', true);
 // Load your project's Routes
 keystone.set('routes', require('./routes'));
 

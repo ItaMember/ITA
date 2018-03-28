@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "async": "2.1.4",
+    "cors": "^2.8.4",
     "dotenv": "4.0.0",
     "keystone": "4.0.0-beta.5",
     "lodash": "^4.13.1",
