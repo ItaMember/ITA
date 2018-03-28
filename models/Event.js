@@ -12,8 +12,8 @@ Event.add({
     time: { type: Date, initial: true, required: true },
     image: {type : Types.CloudinaryImage , initial :true},
     price: {type: Types.Number, initial:true},
-    participants: {type:  Types.Relationship, ref: 'User' ,  many: true},
-    participant_limit : {type: Types.Number, initial:true}
+    participant_limit : {type: Types.Number, initial:true},
+    Description: { type: String, initial: true, required: true}
 });
 
 Event.relationship({ path: 'participants', ref: 'User', refPath: 'email' });
