@@ -13,11 +13,11 @@ Event.add({
     image: {type : Types.CloudinaryImage , initial :true},
     price: {type: Types.Number, initial:true},
     participant_limit : {type: Types.Number, initial:true},
-    Description: { type: String, initial: true, required: true}
+    description : { type: String, initial: true, required: true}
 });
 
 /**
  * Registration
  */
-Event.defaultColumns = 'name, last_timename, price, participant, participant_limit';
+Event.defaultColumns = 'name, time, price, participant_limit,description';
 Event.register();
