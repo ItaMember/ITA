@@ -101,7 +101,7 @@ exports.login = function(req, res) {
   var ps = req.body.password;
   if (!em || !ps) return res.json({ 
     status: false,
-    message: "Please fill email and password !" 
+    message: "Please fill email and password!" 
   });
   keystone.list('User').model.findOne({ email: em }).exec(function(err, user) {
   console.log(user);
