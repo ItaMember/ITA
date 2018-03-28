@@ -3,7 +3,7 @@ var Event = keystone.list('Event');
 
 exports.list = function(req, res) {
   console.log("get all");
-  Event.model.find(function(err, items) {
+  Event.model.find().populate("_id","name").exec(function(err, items) {
 
     if (err) return res.json({ err: err });
 
@@ -17,7 +17,7 @@ exports.list = function(req, res) {
 exports.get = function(req, res) {
   console.log("getOne");
   Event.model.findById(req.params.id).exec(function(err, item) {
-
+    console.log(req.params.id);
     if (err) return res.json({ err: err });
     if (!item) return res.json('not found');
 
