@@ -16,7 +16,6 @@ Event.add({
     Description: { type: String, initial: true, required: true}
 });
 
-Event.relationship({ path: 'participants', ref: 'User', refPath: 'email' });
 /**
  * Registration
  */
