@@ -12,7 +12,6 @@ var cors = require('cors');
 keystone.init({
 	'name': 'ITA',
 	'brand': 'ITA',
-	
 	'less': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
@@ -46,11 +45,10 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	
 	users: 'users',
-	pages: 'pages',
 	galleries: 'galleries',
-	enquiries: 'enquiries'
+	enquiries: 'enquiries',
+	event:'events'
 });
 
 // Start Keystone to connect to your database and initialise the web server

@@ -143,7 +143,7 @@ exports.remove = function(req, res) {
       if (err) return res.json({ dberror: err });
 
       return res.json({
-        success: true
+        status: true
       });
     });
 

@@ -11,7 +11,7 @@ Event.add({
 	name: { type: Types.Text, initial: true, required: true, unique: true},
     time: { type: Date, initial: true, required: true },
     image: {type : Types.CloudinaryImage , initial :true},
-    price: {type: Types.Money, format: 'Rp 0.00' , initial:true},
+    price: {type: Types.Money, format: 'Rp 0.00' , initial: true ,required: true},
     participant_limit : {type: Types.Number, initial:true},
     description : { type: Types.Textarea, initial: true, required: true}
 });
