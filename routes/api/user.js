@@ -131,7 +131,29 @@ exports.login = function(req, res) {
   });
 }
 
-
+exports.upload = function(req, res) {
+  console.log('upload');
+  console.log(req);
+  var em = req.body.email;
+  console.log(em);
+  User.model.findOne({ email: em }).exec(function(err, user) {
+    if (err) return res.json({ err: err });
+    if (!user) return res.json({ err: 'not found' });
+    user.getUpdateHandler(req).process(req.files, {fields: 'image'}, function(err) {
+      if (err) {
+          return res.status(500).json({ message: err.message || '', code: 10 });
+      }
+      else{
+        return res.json(
+          {
+            status:"true",
+            message:"upload success"  
+          }
+        )
+      }
+    });
+  });
+}
 /**
  * Delete People by ID
  */

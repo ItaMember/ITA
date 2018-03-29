@@ -2,16 +2,30 @@ var keystone = require('keystone');
 var Event = keystone.list('Event');
 
 exports.list = function(req, res) {
-  console.log("get all");
-  Event.model.find().populate("_id","name").exec(function(err, items) {
+  if(req.query.page == undefined && req.query.limit == undefined){
+    console.log("get all");
+    Event.model.find().populate("_id","name").exec(function(err, items) {
 
-    if (err) return res.json({ err: err });
-
-    res.json({
-      events: items
+      if (err) return res.json({ err: err });
+  
+      res.json({
+        events: items
+      });
+  
     });
-
-  });
+  }else{
+    Event.paginate({
+      page: req.query.page,
+      perPage: req.query.limit
+    }).exec(function(err, results) {
+      if(err){
+        console.log(err);
+      }
+      res.json({
+        events : results.results
+      });
+    });
+  }
 }
 
 exports.get = function(req, res) {
