@@ -8,7 +8,7 @@ var Types = keystone.Field.Types;
 var Event = new keystone.List('Event');
 
 Event.add({
-	name: { type: Types.Text, initial: true, required: true, unique: true},
+	name: { type: Types.Text, initial: true, required: true},
     time: { type: Date, initial: true, required: true },
     image: {type : Types.CloudinaryImage , initial :true},
     price: {type: Types.Money, format: 'Rp 0.00' , initial: true ,required: true},
