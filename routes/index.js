@@ -43,9 +43,10 @@ exports = module.exports = function (app) {
 	app.get('/api/users/:id', routes.api.user.get);
 	app.post('/api/users/register', routes.api.user.create);
 	app.put('/api/users/upload',routes.api.user.upload);
-	app.put('/api/users/:id', routes.api.user.update);
+	app.put('/api/users/update', routes.api.user.update);
 	app.delete('/api/users/:id', routes.api.user.remove);
 	app.post('/api/users/login',routes.api.user.login);
+	app.put('/api/users/resetpassword',routes.api.user.forgetpassword);
 	
 
 	app.get('/api/events', routes.api.event.list);

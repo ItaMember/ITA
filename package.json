@@ -6,8 +6,10 @@
     "async": "2.1.4",
     "cors": "^2.8.4",
     "dotenv": "4.0.0",
+    "generate-password": "^1.4.0",
     "keystone": "4.0.0-beta.5",
     "lodash": "^4.13.1",
+    "nodemailer": "^4.6.4",
     "nodemon": "^1.17.1",
     "pug": "2.0.0-beta11",
     "ursa": "^0.9.4"

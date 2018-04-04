@@ -1,5 +1,9 @@
 var keystone = require('keystone');
 var User = keystone.list('User');
+//password generator
+var generator = require('generate-password');
+//email sender
+var nodemailer = require('nodemailer');
 
 exports.list = function(req, res) {
   console.log("get all");
@@ -28,6 +32,54 @@ exports.get = function(req, res) {
   });
 }
 
+exports.forgetpassword = function(req, res){
+  var em = req.query.email;
+  keystone.list('User').model.findOne({ email: em }).exec(function(err, user) {
+    if (err) return res.json({ err: err });
+    if (!user) return res.json({ err: 'not found' });
+    var smtpConfig = {
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true, // use SSL
+      auth: {
+          user: 'itamember18@gmail.com',
+          pass: 'developer128'
+      }
+    };
+    var transporter = nodemailer.createTransport(smtpConfig);
+    var randompassword = generator.generate( {
+        length: 8,
+        strict: true,
+        numbers:true
+    });
+    var newPassword = randompassword;
+    req.query.password = randompassword;
+    var data = req.query;
+    user.getUpdateHandler(req).process(data, function(err) {
+      if (err) {
+        return res.json({ err: err });
+      }
+      else{
+        var mailOptions = {
+          from: 'ita@gmail.com',
+          to: em,
+          subject: 'change password request for ita application',
+          text: 'your new password is '+ newPassword
+        };
+          transporter.sendMail(mailOptions, function(error, response){
+            if(error){
+              console.log(error);
+            }else{
+              return res.json({ 
+                status : "true",
+                message : "Your new password already sent to your email"
+              });
+            }
+          });
+        }
+    });
+  });
+}
 
 /**
  * Create a People
@@ -36,9 +88,7 @@ exports.create = function(req, res) {
   console.log("create");
   var item = new User.model(),
     data = (req.method == 'POST') ? req.body : req.query;
-
   item.getUpdateHandler(req).process(data, function(err) {
-
     if (err)
     {
       // console.log(err);
@@ -64,8 +114,6 @@ exports.create = function(req, res) {
         phone_number :item.phone_number
       });
     }
-    
-
   });
 }
 
@@ -74,23 +122,18 @@ exports.create = function(req, res) {
  */
 exports.update = function(req, res) {
   console.log("update");
-  User.model.findById(req.params.id).exec(function(err, item) {
-
+  console.log(req.query);
+  User.model.findOne({email:req.query.email}).exec(function(err, item) {
+    console.log(item);
     if (err) return res.json({ err: err });
     if (!item) return res.json({ err: 'not found' });
-
-    var data = (req.method == 'PUT') ? req.body : req.query;
-
+    var data = req.query;
     item.getUpdateHandler(req).process(data, function(err) {
-
       if (err) return res.json({ err: err });
-
       res.json({
         user: item
       });
-
     });
-
   });
 }
 
