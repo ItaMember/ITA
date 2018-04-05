@@ -71,7 +71,7 @@ exports.forgetpassword = function(req, res){
               console.log(error);
             }else{
               return res.json({ 
-                status : "true",
+                status : true,
                 message : "Your new password already sent to your email"
               });
             }
@@ -94,12 +94,12 @@ exports.create = function(req, res) {
       // console.log(err);
       if(err.error == "validation errors"){
         return res.json({ 
-          status : "false",
+          status : false,
           message : "Sorry, there was an issue, please try again."
         });
       }else if(err.error == "database error"){
         return res.json({
-          status : "false",
+          status : false,
           message : "The email address is already in use. Please try another email address."
         })
       }
@@ -150,7 +150,7 @@ exports.login = function(req, res) {
   console.log(user);
     if (err || !user) {
       return res.json({
-        status: "false",
+        status: false,
         message: (err && err.message ? err.message : false) || 'Sorry, there was an issue signing you in, please try again.'
       });
     }
@@ -167,7 +167,7 @@ exports.login = function(req, res) {
       
     }, function(err) { 
       return res.json({
-        status: "false",
+        status: false,
         message: (err && err.message ? err.message : false) || 'Sorry, there was an issue signing you in, please try again.'
       });
     });
@@ -189,7 +189,7 @@ exports.upload = function(req, res) {
       else{
         return res.json(
           {
-            status:"true",
+            status:true,
             message:"upload success"  
           }
         )
