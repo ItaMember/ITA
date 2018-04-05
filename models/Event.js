@@ -14,7 +14,7 @@ Event.add({
     price: {type: Types.Money, format: 'Rp 0.0,00' , initial: true ,required: true},
     participant_limit : {type: Types.Number, initial:true},
     description : { type: Types.Textarea, initial: true, required: true},
-    location:{ type: Types.Location, defaults: { country: 'Indonesia' }}s
+    location:{ type: Types.Location, defaults: { country: 'Indonesia' }}
 });
 
 
