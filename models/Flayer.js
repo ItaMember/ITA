@@ -10,7 +10,8 @@ var Flayer = new keystone.List('Flayer');
 Flayer.add({
 	name: { type: Types.Text, initial: true, required: true, unique: true},
     expired : { type: Date, initial: true, required: true },
-    image: {type : Types.CloudinaryImage , initial :true}
+    image: {type : Types.CloudinaryImage , initial :true},
+    location:{ type: Types.Location, defaults: { country: 'Indonesia' }}
 });
 
 
