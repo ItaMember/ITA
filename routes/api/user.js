@@ -36,7 +36,14 @@ exports.forgetpassword = function(req, res){
   var em = req.query.email;
   keystone.list('User').model.findOne({ email: em }).exec(function(err, user) {
     if (err) return res.json({ err: err });
-    if (!user) return res.json({ err: 'not found' });
+
+    if (!user){
+      return res.json({ 
+        status : false,
+        message : "Your email is not registered please enter a valid email"
+      });
+    }
+
     var smtpConfig = {
       host: 'smtp.gmail.com',
       port: 465,
