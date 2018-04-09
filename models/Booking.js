@@ -10,7 +10,7 @@ var Booking = new keystone.List('Booking');
 Booking.add({
 	user: { type: Types.Relationship, ref:'User'},
     event: { type: Types.Relationship, ref:'Event' },
-    status: { type: Types.Select, options: 'draft, published, archived', default: 'draft'}
+    status: { type: Types.Select, options: 'open,booked, purchased', default: 'open'}
 });
 
 
